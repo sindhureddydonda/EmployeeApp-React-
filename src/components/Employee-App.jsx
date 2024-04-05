@@ -5,6 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 
 export default function ImgMediaCard() {
   return (
@@ -15,6 +17,8 @@ export default function ImgMediaCard() {
         height="140"
         image="contemplative-reptile.jpg"
       />
+
+      <MoreVertIcon />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           Lizard
