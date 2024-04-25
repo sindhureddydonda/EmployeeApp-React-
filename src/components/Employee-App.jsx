@@ -5,37 +5,64 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import AllInclusiveRoundedIcon from '@mui/icons-material/AllInclusiveRounded';
+import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
-export default function MediaCard({employee}) {
-  console.log(employee[0]);
+
+
+export default function ImgMediaCard({data}) {
+ /*console.log(data);*/ 
   return (
-    <Card sx={{ maxWidth: 345, margin: 10, padding: 2 }}>
+    <>
+    {data.map((item,index) => (
+
+        <Card sx={{ maxWidth: 345, padding: 6, margin:6 }}>
+        <Box>
+
       <CardMedia
-          sx={{ height: 200, backgroundSize:"contain", margin:1 }}
-          image={employee[0].image}
-          title="profile"/>      
+        sx={{ height: 250,width: 250, BackgroundSize: "contain", margin:"auto", justifyContent: "center"}}
+        component="img"
+        alt="green iguana"
+        height="140"
+        image={`/EmployeeApp-React-/${item.image}`}
+      />
+      
+          </Box>
+       
+      
+      <AllInclusiveRoundedIcon />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {employee[0].firstName}{employee[0].lastName}
+         {item.firstName} {item.lastName}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {employee[0]. title}
+        {item.position}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {employee[0]. position}
-        </Typography>
-       
+
+       <Stack direction="row" spacing={1} sx={{margin: 2}} flexWrap="wrap">
+
+
+       {item.skills.map((skill,skillIndex) => (
+        <Chip key={skillIndex} label= {skill}
+              sx={{marginTop:"auto", justifyContent: "center"}}/>
+       ))}
+
+       </Stack>
 
       </CardContent>
+      <CardActions sx={{justifyContent:"center"}}>
       <Stack direction="row" spacing={1}>
-      <Chip label="Chip Filled" />
-      <Chip label="Chip Outlined" variant="outlined" />
-    </Stack>
-
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+      <Chip label={item.onLeave ? "Inactive" : "Active"} variant={item.onLeave ?"outlined":""}/>
+      <Chip label={`Hours: ${item.hoursLoggedThisWeek}`}
+            variant="outlined" />
+      </Stack>
       </CardActions>
     </Card>
+      
+  ))}
+    </>
   );
 }
+
