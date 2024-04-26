@@ -41,8 +41,7 @@ function App() {
     
     <Stack spacing={2} direction="row">
 
-      <Button variant="contained">Active</Button>
-      <Button variant="outlined">Inactive</Button>
+      
       <Switch {...label} checked={onLeave} onClick={handleToggle} />
     </Stack>
      <MediaCard data={filteredData} /> 
