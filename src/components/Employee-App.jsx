@@ -42,12 +42,14 @@ export default function ImgMediaCard({data}) {
         {item.position}
         </Typography>
 
-       <Stack direction="row" spacing={1} sx={{margin: 2}} flexWrap="wrap">
-
+       <Stack>
 
        {item.skills.map((skill,skillIndex) => (
-        <Chip key={skillIndex} label= {skill}
-              sx={{marginTop:"auto", justifyContent: "center"}}/>
+        <Chip 
+        variant = "outlined"
+        sx= {{marginTop: "10px" }}
+        key={skillIndex}
+        label = {skill} />
        ))}
 
        </Stack>
